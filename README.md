@@ -1,6 +1,6 @@
 # RFID Rodeo
 
-An offline, single-file HTML reference and calculator for Wiegand and smart-card (HID / Indala / TWIC / PIV and related) bit formats. Runs entirely in your browser — no network, no dependencies, nothing leaves the page.
+An offline, single-file HTML reference and calculator for Wiegand and smart-card (HID / Indala / TWIC / and related) bit formats. Runs entirely in your browser — no network, no dependencies, nothing leaves the page.
 
 Maintained by [@connor-sys](https://github.com/connor-sys).
 
