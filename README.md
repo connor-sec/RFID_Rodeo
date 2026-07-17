@@ -5,7 +5,7 @@ An offline, single-file HTML reference and calculator for Wiegand and smart-card
 Maintained by [@connor-sys](https://github.com/connor-sys).
 
 <p align="center">
-    <img src="RFID_RODEO_logo.png" alt="RFID Rodeo" width="400">
+    <img src="RFID_RODEO_logo.jpg" alt="RFID Rodeo" width="400">
 </p>
 
 ## Usage
