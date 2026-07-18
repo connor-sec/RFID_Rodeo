@@ -24,7 +24,7 @@ Open `RFID-Rodeo-v0.3.2.html` in any modern browser. That's it — no install, n
 
 I built this while working on-site with no internet access. I needed to check a few card formats, but with no connection I couldn't reach an archived copy of 0xFFFF's site, http://cardinfo.barkweb.com.au.
 
-Stuck offline, I thought of Michael Bazzell's [local OSINT tools](https://inteltechniques.com/tools/index.html) — self-contained pages that run entirely on your own machine, not dependent on his website being up. Previously his [tools](https://inteltechniques.com/tools/index.html) were online-only, but after his site was repeatedly DDoS'D, he took the tools offline and eventually made downloadable copies available to anyone who purchased his book, OSINT Techniques — so customers would never have to depend on his site staying up. That's exactly the philosophy this project borrows.
+Stuck offline, I thought of Michael Bazzell's local OSINT tools — self-contained pages that run entirely on your own machine, not dependent on his website being up. Previously his [tools](https://inteltechniques.com/tools/index.html) were online-only, but after his site was repeatedly DDoS'D, he took the tools offline and eventually made downloadable copies available to anyone who purchased his book, OSINT Techniques — so customers would never have to depend on his site staying up. That's exactly the philosophy this project borrows.
 
 I also didn't want to run into what's rumored to have happened to 0xFFFF. The rumor is that the site (http://cardinfo.barkweb.com.au) was taken offline because the expense of keeping it running became unsustainable. True or not, I choose to make this a self-contained, offline file means it can't suffer the same fate.
 
