@@ -24,9 +24,9 @@ Open `RFID-Rodeo-v1.0.html` in any modern browser. That's it — no install, no 
 
 I built this while working on-site with no internet access. I needed to check a few card formats, but with no connection I couldn't reach an archived copy of 0xFFFF's site, http://cardinfo.barkweb.com.au.
 
-Stuck offline, I thought of Michael Bazzell's local OSINT tools — self-contained pages that run entirely on your own machine, not dependent on his website being up. Previously his [tools](https://inteltechniques.com/tools/index.html) were online-only, but after his site was repeatedly DDoS'D, he took the tools offline and eventually made downloadable copies available to anyone who purchased his book, OSINT Techniques — so customers would never have to depend on his site staying up. That's exactly the philosophy this project borrows.
+Stuck offline, I thought of Michael Bazzell's local OSINT tools — self-contained pages that run entirely on your own machine, not dependent on his website being up. Previously his [tools](https://inteltechniques.com/tools/index.html) were online-only, but after his site was repeatedly DDoS'd, he took the tools offline and eventually made downloadable copies available to anyone who purchased his book, OSINT Techniques — so customers would never have to depend on his site staying up. That's exactly the philosophy this project borrows.
 
-I also didn't want to run into what's rumored to have happened to 0xFFFF. The rumor is that the site (http://cardinfo.barkweb.com.au) was taken offline because the expense of keeping it running became unsustainable. True or not, I choose to make this a self-contained, offline file means it can't suffer the same fate.
+I also didn't want to run into what's rumored to have happened to 0xFFFF. The rumor is that the site (http://cardinfo.barkweb.com.au) was taken offline because the expense of keeping it running became unsustainable. True or not, making this a self-contained, offline file means it can't suffer the same fate.
 
 The goal is simple: one fully offline HTML file you can keep on a laptop, a USB stick, or an SD card and open anywhere, anytime — internet or not.
 
@@ -48,13 +48,13 @@ This project stands entirely on the shoulders of others.
 
 ### 🙏 0xFFFF — the original creator
 
-The heart of this reference began with the extraordinary work of 0xFFFF on the now-deprecated site http://cardinfo.barkweb.com.au. That site was a genuine labor of love — painstakingly documenting card formats, bit layouts, field positions, and parity schemes that countless researchers, locksmiths, and hobbyists have relied on for years. 
+The heart of this reference began with the extraordinary work of 0xFFFF on the now-deprecated site http://cardinfo.barkweb.com.au. That site was a genuine labor of love — painstakingly documenting card formats, bit layouts, field positions, and parity schemes that countless researchers, locksmiths, and hobbyists have relied on for years.
 
-This local, offline page would not be possible without 0xFFFF. Many format tables and layouts here trace back to that foundational effort. Thank you, 0xFFFF, for the countless hours, the attention to detail, and the generosity of sharing it all freely all credit for the groundwork belongs to you. 🫡
+This local, offline page would not be possible without 0xFFFF. Many format tables and layouts here trace back to that foundational effort. Thank you, 0xFFFF, for the countless hours, the attention to detail, and the generosity of sharing it all freely — all credit for the groundwork belongs to you. 🫡
 
 ### ⚡ Iceman
 
-A major shout-out to Iceman. Without his tireless work, research, and stewardship of the Proxmark / RFID Research Group ecosystem, RFID hacking simply would not be where it is today. The tools, the firmware, the documentation, the relentless reverse-engineering — the entire field owes him an enormous debt. 
+A major shout-out to Iceman. Without his tireless work, research, and stewardship of the Proxmark / RFID Research Group ecosystem, RFID hacking simply would not be where it is today. The tools, the firmware, the documentation, the relentless reverse-engineering — the entire field owes him an enormous debt.
 
 This project leans on that work directly: every format marked **Verified** has its field positions and parity transcribed and checked against the RFID Research Group (Iceman fork) Proxmark client, [`client/src/wiegand_formats.c`](https://github.com/RfidResearchGroup/proxmark3/blob/master/client/src/wiegand_formats.c).
 
@@ -64,6 +64,6 @@ A huge shout-out to Langston Clements & Dan Goga for their excellent DEF CON tal
 
 ## License
 
-Released under the [GNU Affero General Public License v3.0](https://github.com/connor-sys/Access-Control-Bit-Format-Reference/blob/main/LICENSE) (AGPL-3.0).
+Released under the [GNU Affero General Public License v3.0](https://github.com/connor-sec/RFID_Rodeo/blob/main/LICENSE) (AGPL-3.0).
 
 This is a strong copyleft license: anyone who distributes this code or runs a modified version as a network/hosted service must make their complete source available under the same AGPL-3.0 terms. Copyright and license notices must be preserved.
