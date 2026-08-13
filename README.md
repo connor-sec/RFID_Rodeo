@@ -8,9 +8,11 @@ Maintained by [@connor-sec](https://github.com/connor-sec).
     <img src="RFID_RODEO_logo.jpg" alt="RFID Rodeo" width="400">
 </p>
 
+> **Download:** the latest single-file build is available from the **Packages** tab (or the [Releases](https://github.com/connor-sec/RFID_Rodeo/releases) page) — one `.html` file, ready to open.
+
 ## Usage
 
-Open `RFID-Rodeo-v1.0.html` in any modern browser. That's it — no install, no server.
+Open `RFID-Rodeo-v1.2.html` in any modern browser. That's it — no install, no server.
 
 ## ⚠️ Authorized use only — for security research and education
 
@@ -24,9 +26,9 @@ Open `RFID-Rodeo-v1.0.html` in any modern browser. That's it — no install, no 
 
 I built this while working on-site with no internet access. I needed to check a few card formats, but with no connection I couldn't reach an archived copy of 0xFFFF's site, http://cardinfo.barkweb.com.au.
 
-Stuck offline, I thought of Michael Bazzell's local OSINT tools — self-contained pages that run entirely on your own machine, not dependent on his website being up. Previously his [tools](https://inteltechniques.com/tools/index.html) were online-only, but after his site was repeatedly DDoS'd, he took the tools offline and eventually made downloadable copies available to anyone who purchased his book, OSINT Techniques — so customers would never have to depend on his site staying up. That's exactly the philosophy this project borrows.
+Stuck offline, I thought of Michael Bazzell's [local OSINT tools](https://inteltechniques.com/tools/index.html) — self-contained pages that run entirely on your own machine, not dependent on his website being up. His tools are normally online-only, but after his site was repeatedly hit by DDoS attacks, he took them offline and made downloadable copies available to anyone who purchased his book, OSINT Techniques — so customers would never have to depend on his site staying up. That's exactly the philosophy this project borrows.
 
-I also didn't want to run into what's rumored to have happened to 0xFFFF. The rumor is that the site (http://cardinfo.barkweb.com.au) was taken offline because the expense of keeping it running became unsustainable. True or not, making this a self-contained, offline file means it can't suffer the same fate.
+I also didn't want to run into what's rumored to have happened to 0xFFFF. The rumor is that the site was taken offline because the expense of keeping it running became unsustainable. True or not, that possibility drove the point home: a resource this useful shouldn't hinge on someone footing a hosting bill forever. Making this a self-contained, offline file means it can't suffer the same fate.
 
 The goal is simple: one fully offline HTML file you can keep on a laptop, a USB stick, or an SD card and open anywhere, anytime — internet or not.
 
@@ -38,7 +40,7 @@ The goal is simple: one fully offline HTML file you can keep on a laptop, a USB 
 * **Compare two formats** side by side.
 * **Identify a captured frame** — paste raw Wiegand bits (or hex) and it lists every format matching that length, ranked parity-valid first, with decoded fields.
 * **Value converter** — Hex / Dec / Bin (bidirectional) plus ASCII and Yubico modHex, with an optional zero-pad.
-* **Flipper ↔ Proxmark tool** — add parity to go Flipper → Proxmark, or strip and verify parity to go Proxmark → Flipper (accepts hex or Wiegand binary in both directions). It also generates a copy-ready Proxmark clone command (e.g. `lf hid clone -w H10301 --fc 95 --cn 3405`) and exports a ready-to-use Flipper `.rfid` key file.
+* **Flipper ↔ Proxmark tool** — add parity to go Flipper → Proxmark, or strip and verify parity to go Proxmark → Flipper (accepts hex or Wiegand binary in both directions). It also generates a copy-ready Proxmark clone command (e.g. `lf hid clone -w H10301 --fc 95 --cn 3405`). Flipper `.rfid` export is **gated to protocols verified against the Flipper firmware** (currently HID H10301) — other formats show a clear note rather than emitting a file the Flipper cannot load.
 
 > **On "Proxmark" vs "Proxmark3":** the tool says "Proxmark" generically — the Proxmark5 is expected to share the same client commands, and the iCopy-XS (reverse-engineered by Lab401) already runs Proxmark under the hood, so the label isn't tied to one device.
 
@@ -48,15 +50,15 @@ This project stands entirely on the shoulders of others.
 
 ### 🙏 0xFFFF — the original creator
 
-The heart of this reference began with the extraordinary work of 0xFFFF on the now-deprecated site http://cardinfo.barkweb.com.au. That site was a genuine labor of love — painstakingly documenting card formats, bit layouts, field positions, and parity schemes that countless researchers, locksmiths, and hobbyists have relied on for years.
+The heart of this reference began with the extraordinary work of 0xFFFF on the now-deprecated site http://cardinfo.barkweb.com.au. That site was a genuine labor of love — painstakingly documenting card formats, bit layouts, field positions, and parity schemes that countless researchers, locksmiths, and hobbyists have relied on for years. It was the kind of resource that quietly makes an entire community better.
 
-This local, offline page would not be possible without 0xFFFF. Many format tables and layouts here trace back to that foundational effort. Thank you, 0xFFFF, for the countless hours, the attention to detail, and the generosity of sharing it all freely — all credit for the groundwork belongs to you. 🫡
+This local, offline page would not be possible without 0xFFFF. Many format tables and layouts here trace back to that foundational effort. Thank you, 0xFFFF, for the countless hours, the attention to detail, and the generosity of sharing it all freely. This is simply a humble attempt to keep that work alive and accessible now that the original site is gone — all credit for the groundwork belongs to you. 🫡
 
 ### ⚡ Iceman
 
-A major shout-out to Iceman. Without his tireless work, research, and stewardship of the Proxmark / RFID Research Group ecosystem, RFID hacking simply would not be where it is today. The tools, the firmware, the documentation, the relentless reverse-engineering — the entire field owes him an enormous debt.
+A major shout-out to Iceman. Without his tireless work, research, and stewardship of the Proxmark3 / RFID Research Group ecosystem, RFID hacking simply would not be where it is today. The tools, the firmware, the documentation, the relentless reverse-engineering — the entire field owes him an enormous debt. Legend. ⚡
 
-This project leans on that work directly: every format marked **Verified** has its field positions and parity transcribed and checked against the RFID Research Group (Iceman fork) Proxmark client, [`client/src/wiegand_formats.c`](https://github.com/RfidResearchGroup/proxmark3/blob/master/client/src/wiegand_formats.c).
+This project leans on that work directly: every format marked **Verified** has its field positions and parity transcribed and checked against the RFID Research Group (Iceman fork) Proxmark client, [`client/src/wiegand_formats.c`](https://github.com/RfidResearchGroup/proxmark3/blob/master/client/src/wiegand_formats.c) — which itself credits community references including cardinfo.barkweb.com.au and proxclone.com.
 
 ### 🎤 Langston Clements & Dan Goga
 
