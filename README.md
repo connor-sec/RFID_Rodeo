@@ -12,7 +12,7 @@ Maintained by [@connor-sec](https://github.com/connor-sec).
 
 ## Usage
 
-Open `RFID-Rodeo-v1.2.html` in any modern browser. That's it — no install, no server.
+Open `RFID-Rodeo-v1.3.html` in any modern browser. That's it — no install, no server.
 
 ## ⚠️ Authorized use only — for security research and education
 
@@ -34,11 +34,11 @@ The goal is simple: one fully offline HTML file you can keep on a laptop, a USB 
 
 ## Features
 
-* **~78 card formats** with detailed bit-layout tables and a universal color key by field type.
-* **Per-format verification status** — each format is badged **Verified** (field positions and parity checked against the Proxmark client reference), **Documented** (published layout with the standard parity convention), or **Reference** (shown for completeness, not computed).
-* **Per-format calculator** — encode field values into a raw frame, or decode a raw hex frame (with parity checks). Invalid input is rejected with a clear message rather than silently altered.
+* **~76 card formats** with detailed bit-layout tables and a universal color key by field type.
+* **Per-format verification status** — each format is badged **Verified** (field positions and parity checked against the Proxmark client reference), **Documented** (published layout, including a few non-linear layouts checked against the same reference), or **Reference** (shown for completeness, not computed).
+* **Per-format calculator** — encode field values into a raw frame, or decode a raw hex frame (with parity checks). Invalid input, including values that do not fit the field or the frame, is rejected with a message. No truncated frame is emitted.
 * **Compare two formats** side by side.
-* **Identify a captured frame** — paste raw Wiegand bits (or hex) and it lists every format matching that length, ranked parity-valid first, with decoded fields.
+* **Identify a captured frame** — paste raw Wiegand bits, or hex plus a bit length. Hex without a length is tried at every width the digits can represent, and each width is labeled.
 * **Value converter** — Hex / Dec / Bin (bidirectional) plus ASCII and Yubico modHex, with an optional zero-pad.
 * **Flipper ↔ Proxmark tool** — add parity to go Flipper → Proxmark, or strip and verify parity to go Proxmark → Flipper (accepts hex or Wiegand binary in both directions). It also generates a copy-ready Proxmark clone command (e.g. `lf hid clone -w H10301 --fc 95 --cn 3405`). Flipper `.rfid` export is **gated to protocols verified against the Flipper firmware** (currently HID H10301) — other formats show a clear note rather than emitting a file the Flipper cannot load.
 
@@ -63,6 +63,16 @@ This project leans on that work directly: every format marked **Verified** has i
 ### 🎤 Langston Clements & Dan Goga
 
 A huge shout-out to Langston Clements & Dan Goga for their excellent DEF CON talk, [Flipping Locks — Remote Badge Cloning with the Flipper Zero and More](https://www.youtube.com/watch?v=ro-EkKjj_wc). Their research into how the Flipper Zero handles (and drops) Wiegand parity directly inspired and informed the Flipper ↔ Proxmark parity tool built into this page. Thank you both for sharing your work with the community.
+
+## Tests
+
+The page itself stays one offline file with no runtime dependencies. `tests/` checks it against Wiegand frames packed by Proxmark3 `wiegand_formats.c` (RFID Research Group / Iceman, commit `0bf02faa`, 2026-11-16).
+
+```bash
+cd tests && npm install && npm test
+```
+
+`tests/gen-vectors.js` rebuilds `tests/vectors.json` when a local packer binary is available (`HARNESS=/path/to/harness node gen-vectors.js`). The committed vectors are what `npm test` uses, so the check does not need Proxmark sources.
 
 ## License
 

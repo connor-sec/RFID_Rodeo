@@ -1,0 +1,12 @@
+{
+  "name": "rfid-rodeo-tests",
+  "private": true,
+  "description": "Offline checks for RFID-Rodeo-v1.3.html. Not loaded by the page.",
+  "scripts": {
+    "test": "node page.test.js",
+    "gen-vectors": "node gen-vectors.js"
+  },
+  "devDependencies": {
+    "jsdom": "25.0.1"
+  }
+}
