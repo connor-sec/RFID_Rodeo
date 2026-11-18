@@ -4,10 +4,10 @@
 
 | Version | Supported |
 | --- | --- |
-| 1.3 | Yes |
+| 1.4 | Yes |
 | Older releases | No |
 
-1.3 is the supported release. Reports against older builds will not be addressed unless they also affect 1.3.
+1.4 is the supported release. Reports against older builds will not be addressed unless they also affect 1.4.
 
 ## Reporting a vulnerability
 

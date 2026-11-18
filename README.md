@@ -8,11 +8,11 @@ Maintained by [@connor-sec](https://github.com/connor-sec).
     <img src="RFID_RODEO_logo.jpg" alt="RFID Rodeo" width="400">
 </p>
 
-> **Download:** the latest single-file build is available from the **Packages** tab (or the [Releases](https://github.com/connor-sec/RFID_Rodeo/releases) page) — one `.html` file, ready to open.
+> **Download:** the latest single-file build is available from the [Releases](https://github.com/connor-sec/RFID_Rodeo/releases) page — one `.html` file, ready to open.
 
 ## Usage
 
-Open `RFID-Rodeo-v1.3.html` in any modern browser. That's it — no install, no server.
+Open `RFID-Rodeo-v1.4.html` in any modern browser. That's it — no install, no server.
 
 ## ⚠️ Authorized use only — for security research and education
 
