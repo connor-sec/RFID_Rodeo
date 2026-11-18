@@ -1,10 +1,10 @@
-/* Compare RFID-Rodeo-v1.3.html with Proxmark-packed frames in vectors.json,
+/* Compare RFID-Rodeo-v1.4.html with Proxmark-packed frames in vectors.json,
    and exercise the calculator, parity tool, and identify paths. */
 const fs = require('fs');
 const path = require('path');
 const { JSDOM, VirtualConsole } = require('jsdom');
 
-const PAGE = path.join(__dirname, '..', 'RFID-Rodeo-v1.3.html');
+const PAGE = path.join(__dirname, '..', 'RFID-Rodeo-v1.4.html');
 const vectors = JSON.parse(fs.readFileSync(path.join(__dirname, 'vectors.json'), 'utf8'));
 const failures = [];
 function check(name, cond, detail) {
@@ -38,7 +38,8 @@ function valsFor(st, v) {
   const { F, specType, encode, decode, constrainVals } = w;
   check('page loads without script errors', errs.length === 0, errs.join('; '));
   check('35 verified formats', F.filter((f) => f.status === 'verified').length === 35);
-  check('footer is v1.3', w.document.body.textContent.includes('v1.3'));
+  const footer = w.document.querySelector('footer').textContent;
+  check('footer is v1.4', footer.includes('v1.4') && !footer.includes('v1.3'), footer.slice(0, 40));
   check('no 48-bit H10302/H10304 stubs', !F.some((f) => /37BIT|HUGHES ID/.test(f.n)));
   const h10320 = F.find((f) => f.n.includes('H10320'));
   check('H10320 is 37-bit reference', h10320 && h10320.b === 37 && h10320.status === 'reference');
@@ -193,6 +194,45 @@ function valsFor(st, v) {
   doc.getElementById('id_go').click();
   const id26 = doc.getElementById('id_out').textContent;
   check('identify with length 26', /^26-bit frame/.test(id26) && /parity OK/.test(id26), id26.split('\n')[0]);
+
+  const aw = add('AWID RS2', { fc: '1', card: '1' });
+  check('AWID command uses lf awid clone --fmt 34', aw.cmd === 'lf awid clone --fmt 34 --fc 1 --cn 1', aw.cmd);
+  check('AWID command is not --raw', !aw.cmd.includes('--raw'), aw.cmd);
+
+  const av = add('Avigilon 56bit', { fc: '1', card: '1' });
+  check('Avigilon 56 has no clone command', av.cmd === '', av.cmd);
+  check('Avigilon 56 explains the 48-bit limit', /at most 48/.test(av.note) && /56 bits/.test(av.note), av.note);
+
+  const badBits = (h10301.bits[0] === '0' ? '1' : '0') + h10301.bits.slice(1);
+  pick('H10301');
+  doc.getElementById('fpx_fullbin').value = badBits;
+  doc.getElementById('fpx_strip').click();
+  check('parity fail hides Flipper save', doc.getElementById('fpx_saveflip').style.display === 'none');
+  check('parity fail clears the filename', doc.getElementById('fpx_savename').textContent === '');
+  check('parity fail explains why', /Parity failed, so no \.rfid file is offered/.test(doc.getElementById('fpx_savenote').textContent));
+
+  pick('H10301');
+  doc.getElementById('fpx_fullbin').value = h10301.bits;
+  doc.getElementById('fpx_strip').click();
+  check('parity pass offers the H10301 file', doc.getElementById('fpx_saveflip').style.display !== 'none' && doc.getElementById('fpx_savename').textContent === 'standard-26bit-h10301.rfid', doc.getElementById('fpx_savename').textContent);
+
+  pick('H10301');
+  doc.getElementById('fpx_full').value = '';
+  doc.getElementById('fpx_fullbin').value = '1010';
+  doc.getElementById('fpx_strip').click();
+  const shortBin = doc.getElementById('fpx_stripout').textContent;
+  check('short frame binary is not padded', /not padded/.test(shortBin) && !/Wiegand binary:/.test(shortBin), shortBin);
+
+  doc.getElementById('id_bits').value = '10102';
+  doc.getElementById('id_hex').value = '';
+  doc.getElementById('id_len').value = '';
+  doc.getElementById('id_go').click();
+  check('identify rejects non-binary bits', /bits 0 and 1 only/.test(doc.getElementById('id_out').textContent), doc.getElementById('id_out').textContent);
+
+  doc.getElementById('id_bits').value = '1010';
+  doc.getElementById('id_hex').value = 'AB';
+  doc.getElementById('id_go').click();
+  check('identify rejects both bits and hex', /Both Bits and Hex are filled in/.test(doc.getElementById('id_out').textContent), doc.getElementById('id_out').textContent);
 
   dom.window.close();
   console.log('\n' + vectors.cases.length + ' Proxmark frames, ' + (failures.length ? failures.length + ' failed' : 'all checks passed'));
