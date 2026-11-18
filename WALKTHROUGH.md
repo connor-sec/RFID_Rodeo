@@ -2,7 +2,7 @@
 
 A step-by-step walkthrough of a common workflow in **[RFID Rodeo](https://github.com/connor-sec/RFID_Rodeo)**: comparing card formats, converting an HID Prox (H10301) credential, exporting a Flipper Zero `.rfid` file, and generating a Proxmark clone command.
 
-RFID Rodeo is a single, offline HTML file — open `RFID-Rodeo-v1.3.html` in any modern browser. No install, no server, nothing leaves the page.
+RFID Rodeo is a single, offline HTML file — open `RFID-Rodeo-v1.4.html` in any modern browser. No install, no server, nothing leaves the page.
 
 > **⚠️ Authorized use only.** RFID Rodeo transforms values you enter; it does not read, write, transmit, or clone any physical card by itself. Use it only within an expressly authorized and documented testing scope. Outputs may be incomplete or incorrect — independently verify any calculated value against the relevant specification and real hardware before relying on it.
 
