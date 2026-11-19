@@ -12,7 +12,7 @@ if (!HARNESS) {
   console.error('Set HARNESS to the packer binary');
   process.exit(1);
 }
-const PAGE = path.join(__dirname, '..', 'RFID-Rodeo-v1.4.html');
+const PAGE = path.join(__dirname, '..', 'rfid-rodeo.html');
 
 function pm(args) {
   try {
