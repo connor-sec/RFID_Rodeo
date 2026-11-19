@@ -1,10 +1,10 @@
-/* Compare RFID-Rodeo-v1.4.html with Proxmark-packed frames in vectors.json,
+/* Compare rfid-rodeo.html with Proxmark-packed frames in vectors.json,
    and exercise the calculator, parity tool, and identify paths. */
 const fs = require('fs');
 const path = require('path');
 const { JSDOM, VirtualConsole } = require('jsdom');
 
-const PAGE = path.join(__dirname, '..', 'RFID-Rodeo-v1.4.html');
+const PAGE = path.join(__dirname, '..', 'rfid-rodeo.html');
 const vectors = JSON.parse(fs.readFileSync(path.join(__dirname, 'vectors.json'), 'utf8'));
 const failures = [];
 function check(name, cond, detail) {
